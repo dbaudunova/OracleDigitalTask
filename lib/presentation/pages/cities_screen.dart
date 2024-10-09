@@ -18,28 +18,30 @@ class CitiesScreen extends HookConsumerWidget {
     final getCities = ref.watch(cityListProvider(searchQuery.value));
 
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(Dimens.d8),
-            child: _buildTextField(searchController, searchQuery),
-          ),
-          Expanded(
-            child: getCities.when(
-              data: (cities) {
-                return _buildListView(cities);
-              },
-              loading: () => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              error: (error, _) => Center(
-                child: Text(
-                  'Error: $error',
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(Dimens.d8),
+              child: _buildTextField(searchController, searchQuery),
+            ),
+            Expanded(
+              child: getCities.when(
+                data: (cities) {
+                  return _buildListView(cities);
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (error, _) => Center(
+                  child: Text(
+                    'Error: $error',
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

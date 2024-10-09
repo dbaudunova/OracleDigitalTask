@@ -29,7 +29,7 @@ class CityItem extends StatelessWidget {
           Text(
             cityEntity?.slug ?? 'No slug',
             style: Styles.s20w300.copyWith(
-              fontSize: 16,
+              fontSize: Dimens.d16,
             ),
           ),
         ],
