@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:oracle_digital_task/presentation/pages/cities_screen.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:oracle_digital_task/core/my_app.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CitiesScreen(),
+    const ProviderScope(
+      child: MyApp(),
     ),
   );
 }
